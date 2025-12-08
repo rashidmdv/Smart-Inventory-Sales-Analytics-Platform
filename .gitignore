@@ -1,0 +1,27 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+.env
+
+# Database (DO NOT COMMIT)
+db.sqlite3
+
+# Django logs
+*.log
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Media uploads
+media/
+
+# Migrations cache
+**/migrations/__pycache__/
