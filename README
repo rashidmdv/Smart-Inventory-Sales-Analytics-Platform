@@ -48,14 +48,6 @@ python manage.py runserver
 DJANGO-APP/
 │
 ├── apps/
-│   ├── core/
-│   │   ├── helpers/
-│   │   ├── services/
-│   │   ├── permissions/
-│   │   ├── exceptions/
-│   │   ├── __init__.py
-│   │   ├── apps.py
-│   │   └── tests.py
 │   │
 │   ├── students/
 │   │   ├── migrations/
@@ -83,6 +75,15 @@ DJANGO-APP/
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
+
+├── core/
+│   ├── helpers/
+│   ├── services/
+│   ├── permissions/
+│   ├── exceptions/
+│   ├── __init__.py
+│   ├── apps.py
+│   └── tests.py
 │
 ├── db.sqlite3
 ├── manage.py
