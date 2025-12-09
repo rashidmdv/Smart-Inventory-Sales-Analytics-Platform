@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from core.permissions.role_permission import IsTeacher
 
 
+import logging
 
 from apps.students.models import Student
 from apps.students.serializers import StudentSerializer
@@ -16,14 +17,19 @@ from apps.students.services import (
 )
 
 
+logger = logging.getLogger("apps.students")
+
+
 class StudentListCreateView(generics.GenericAPIView):
     serializer_class = StudentSerializer
-    permission_classes = [IsAuthenticated, IsTeacher]
+    # permission_classes = [IsAuthenticated, IsTeacher]
     queryset = Student.objects.all()
+    logger.info("students")
 
     def get(self, request):
         students = list_students(Student)
         serializer = self.get_serializer(students, many=True)
+        logger.info("get students")
         return Response(serializer.data)
 
     def post(self, request):
