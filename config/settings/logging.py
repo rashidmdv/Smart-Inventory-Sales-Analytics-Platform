@@ -10,10 +10,11 @@ LOG_BASE_DIR = os.path.join(BASE_DIR, "logs")
 DJANGO_LOG_DIR = os.path.join(LOG_BASE_DIR, "django")
 ERROR_LOG_DIR = os.path.join(LOG_BASE_DIR, "errors")
 STUDENTS_LOG_DIR = os.path.join(LOG_BASE_DIR, "students")
-TEACHERS_LOG_DIR = os.path.join(LOG_BASE_DIR, "teachers")
+ACCOUNTS_LOG_DIR = os.path.join(LOG_BASE_DIR, "accounts")
+
 
 # Auto create all folders safely
-for path in [DJANGO_LOG_DIR, ERROR_LOG_DIR, STUDENTS_LOG_DIR, TEACHERS_LOG_DIR]:
+for path in [DJANGO_LOG_DIR, ERROR_LOG_DIR, STUDENTS_LOG_DIR, ACCOUNTS_LOG_DIR]:
     os.makedirs(path, exist_ok=True)
 
 
@@ -65,6 +66,18 @@ LOGGING = {
             "formatter": "verbose",
         },
 
+
+        #  Accounts daily log
+        "accounts_file": {
+            "level": "INFO",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": os.path.join(ACCOUNTS_LOG_DIR, "accounts.log"),
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 7,
+            "formatter": "verbose",
+        },
+
         #  Students daily log
         "students_file": {
             "level": "INFO",
@@ -76,16 +89,6 @@ LOGGING = {
             "formatter": "verbose",
         },
 
-        #  Teachers daily log
-        "teachers_file": {
-            "level": "INFO",
-            "class": "logging.handlers.TimedRotatingFileHandler",
-            "filename": os.path.join(TEACHERS_LOG_DIR, "teachers.log"),
-            "when": "midnight",
-            "interval": 1,
-            "backupCount": 7,
-            "formatter": "verbose",
-        },
     },
 
     "root": {
@@ -109,18 +112,19 @@ LOGGING = {
         },
 
         #  Students module logs
+        "apps.accounts": {
+            "handlers": ["accounts_file", "console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+
+        #  Students module logs
         "apps.students": {
             "handlers": ["students_file", "console"],
             "level": "INFO",
             "propagate": False,
         },
 
-        #  Teachers module logs
-        "apps.teachers": {
-            "handlers": ["teachers_file", "console"],
-            "level": "INFO",
-            "propagate": False,
-        },
     },
 
 }
