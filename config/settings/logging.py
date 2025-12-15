@@ -77,18 +77,7 @@ LOGGING = {
             "backupCount": 7,
             "formatter": "verbose",
         },
-
-        #  Students daily log
-        "students_file": {
-            "level": "INFO",
-            "class": "logging.handlers.TimedRotatingFileHandler",
-            "filename": os.path.join(STUDENTS_LOG_DIR, "students.log"),
-            "when": "midnight",
-            "interval": 1,
-            "backupCount": 7,
-            "formatter": "verbose",
-        },
-
+        
     },
 
     "root": {
@@ -111,16 +100,9 @@ LOGGING = {
             "propagate": False,
         },
 
-        #  Students module logs
+        #  Accounts module logs
         "apps.accounts": {
             "handlers": ["accounts_file", "console"],
-            "level": "INFO",
-            "propagate": False,
-        },
-
-        #  Students module logs
-        "apps.students": {
-            "handlers": ["students_file", "console"],
             "level": "INFO",
             "propagate": False,
         },
