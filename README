@@ -72,7 +72,7 @@ DJANGO-APP/
 │   │   ├── rest_framework.py
 │   ├── urls.py
 │   └── wsgi.py
-│  
+│
 ├── core/
 │   ├── helpers/
 │   ├── services/
@@ -86,3 +86,27 @@ DJANGO-APP/
 ├── manage.py
 ├── .gitignore
 └── README.md
+
+
+
+## ▶️ How to Create an App
+
+
+1. mkdir -p apps/app_name
+2. python manage.py startapp app_name apps/app_name
+3. mkdir -p apps/app_name/{models,views,services,serializers}
+
+4.
+    touch apps/app_name/models/__init__.py
+    touch apps/app_name/views/__init__.py
+    touch apps/app_name/services/__init__.py
+    touch apps/app_name/serializers/__init__.py
+
+5.
+    mv apps/app_name/models.py apps/app_name/models/models.py
+    mv apps/app_name/views.py apps/app_name/views/views.py
+    mv apps/app_name/serializers.py apps/app_name/serializers/serializer.py
+    mv apps/app_name/services.py apps/app_name/services/service.py
+
+
+
