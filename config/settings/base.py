@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'core',
     'apps.accounts',
+    'apps.inventory',
     'drf_yasg'
 
 ]
