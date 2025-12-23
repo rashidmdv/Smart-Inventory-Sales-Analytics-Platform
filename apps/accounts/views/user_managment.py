@@ -11,8 +11,8 @@ from core.helpers.pagination import StandardResultsPagination
 
 
 class UserManagementView(APIView):
-    # permission_classes = [IsAuthenticated, IsAdmin]
-    # pagination_class = StandardResultsPagination
+    permission_classes = [IsAuthenticated, IsAdmin]
+    pagination_class = StandardResultsPagination
 
     def get(self, request):
         user_id = request.GET.get("id")
